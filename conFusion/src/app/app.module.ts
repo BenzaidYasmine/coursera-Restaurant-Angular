@@ -39,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { baseURL } from './shared/baseurl';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { environment } from 'src/environments/environment';
     MatSliderModule,
     HttpClientModule,
     
+    
   
   
   ],
@@ -92,6 +94,7 @@ import { environment } from 'src/environments/environment';
     DishService,
     PromotionService,
     LeaderService,
+    ProcessHTTPMsgService
   ],
   entryComponents: [
     LoginComponent
