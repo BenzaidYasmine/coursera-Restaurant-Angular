@@ -1,0 +1,120 @@
+<div class="container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0">
+
+  <div fxFlex="40">
+        <mat-card *ngIf="dish">
+            <mat-card-header>
+                <mat-card-title>
+                 
+                    <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
+                </mat-card-title>
+            </mat-card-header>
+
+            <img mat-card-image src="{{ baseURL + dish.image}}" alt={{dish.name}}>
+            
+            <mat-card-content>
+                <p>{{dish.description}}</p>
+            </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button [routerLink]="['/dishdetail',prev]">
+                      <span class ="fa fa-chevron-left fa-lg"></span>
+                    </button>
+
+                    <button mat-button (click)="goBack()">Back</button>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+                    
+                    <span class="flex-spacer"></span>
+                    <button mat-button [routerLink]="['/dishdetail',prev]">
+                      <span class ="fa fa-chevron-right fa-lg"></span>
+                    </button>
+
+                </mat-card-actions>
+        </mat-card>
+  </div>
+
+
+
+<div fxFlex="40" *ngIf="dish">
+    <mat-list >
+        <h1>Comments</h1>
+            <mat-list-item *ngFor="let com of dish.comments">
+              <h4 matLine> {{com.comment}}  </h4>   
+              <p matLine> {{com.rating }} Stars </p>  
+              <p matLine>  -- {{com.author }}, {{ com.date | date :'longDate' }}</p> 
+             </mat-list-item>
+             <br/>
+    <div>
+       
+        <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+
+      
+        <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          
+          <p>
+            <mat-form-field class="half-width">
+              <input matInput formControlName="name" placeholder="Name" type="text" required>
+              <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
+            </mat-form-field>
+          </p>
+    
+          <mat-slider type="range" #stars (input)="pitch($event)" id="stars"  min="0" max="5" step="1" value="0"></mat-slider>
+          <br/>
+          <label for="stars">Stars ({{ stars.value }})</label>
+          
+
+
+          <p>
+            <mat-form-field class="full-width">
+              <textarea matInput formControlName="message" placeholder="Your Comment" cols=12></textarea>
+            </mat-form-field>
+          </p>
+
+
+
+          <button type="submit" mat-button class="background-primary text-floral-white"
+          [disabled]="feedbackForm.invalid">Submit</button>
+
+        </form>
+      </div>
+    </mat-list>
+
+</div>
+
+  
+
+  <div fxFlex [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  
+</div>
+<!-- 
+<div fxFlex fxFlexOffset="20px" class="form-size">
+  <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+
+  <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+    
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
+        <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
+      </mat-form-field>
+    </p>
+
+     
+    <p>
+      <mat-form-field class="full-width">
+        <textarea matInput formControlName="message" placeholder="Your Feedback" rows=6></textarea>
+      </mat-form-field>
+    </p>
+    <button type="submit" mat-button class="background-primary text-floral-white"
+    [disabled]="feedbackForm.invalid">Submit</button>
+  </form>
+</div>
+-->

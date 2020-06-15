@@ -1,0 +1,30 @@
+
+<div class="container"> 
+
+
+<div >
+    <p>Name of appareil:</p>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+      <input type="text" id="name"  name="nameddee"  [(ngModel)]= "appareil.name"  class='form-control'required>
+      <span>
+        <button type="submit" > submit</button>
+      </span>
+      
+    </form>
+   {{appareil.name}}
+
+
+
+    <p>La liste des fruits: </p>
+        <div  *ngFor='let fruit of fruits '>
+        {{fruit}},
+        </div>
+
+</div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,41 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+<!--Pour avoir le menu-->
+<div fxFlex>
+    <div>
+        <h3>
+            Menu <hr>
+        </h3>
+    </div>
+</div>
+
+
+<!--menu 
+    <app-dishdetail [dish]="selectedDish"> </app-dishdetail>
+     <img mat-card-image src="{{BaseURL + dish.image}}" alt={{dish.name}}>
+-->
+
+
+<div fxFlex *ngIf="dishes">
+    <mat-grid-list cols="2" rowHeight="200px">
+        <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
+         
+          <img mat-card-image src="{{ baseURL + dish.image}}" alt={{dish.name}}>
+          <mat-grid-tile-footer>
+            <h1 > {{dish.name | uppercase}} </h1>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
+</div>
+
+<!--if none dish we will se this message-->
+<div fxFlex [hidden]="dishes">
+  <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+</div>
+
+</div>
+
+
+
