@@ -15,8 +15,8 @@
                 </mat-card-title>
             </mat-card-header>
 
-            <img mat-card-image src="{{ baseURL + dish.image}}" alt={{dish.name}}>
-            
+            <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+
             <mat-card-content>
                 <p>{{dish.description}}</p>
             </mat-card-content>
@@ -25,6 +25,13 @@
                     <button mat-button [routerLink]="['/dishdetail',prev]">
                       <span class ="fa fa-chevron-left fa-lg"></span>
                     </button>
+
+
+                    <span class="flex-spacer"></span>
+                    <button mat-button [routerLink]="['/dishdetail', next]">
+                      <span class="fa fa-chevron-right fa-lg"></span>
+                    </button>
+
 
                     <button mat-button (click)="goBack()">Back</button>
                     <button mat-button>LIKE</button>
@@ -94,27 +101,3 @@
   </div>
   
 </div>
-<!-- 
-<div fxFlex fxFlexOffset="20px" class="form-size">
-  <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
-
-  <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
-    
-    <p>
-      <mat-form-field class="half-width">
-        <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
-        <mat-error *ngIf="formErrors.firstname">{{formErrors.firstname}}</mat-error>
-      </mat-form-field>
-    </p>
-
-     
-    <p>
-      <mat-form-field class="full-width">
-        <textarea matInput formControlName="message" placeholder="Your Feedback" rows=6></textarea>
-      </mat-form-field>
-    </p>
-    <button type="submit" mat-button class="background-primary text-floral-white"
-    [disabled]="feedbackForm.invalid">Submit</button>
-  </form>
-</div>
--->

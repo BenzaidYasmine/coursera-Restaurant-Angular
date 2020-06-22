@@ -10,6 +10,9 @@ import { Feedback } from '../shared/feedback';
 import {Comment} from '../shared/comment';
 import {MatSliderModule} from '@angular/material/slider';
 import { baseURL } from '../shared/baseurl';
+
+
+
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
@@ -85,7 +88,6 @@ export class DishdetailComponent implements OnInit {
     this.onValueChanged();//re set fomr validation
 }
 
- 
 
   onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dish } from '../shared/dish';
-//import{ DISHES } from '../shared/dishes';
+import{ DISHES } from '../shared/dishes';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
@@ -28,7 +28,7 @@ export class DishService {
 */
 
 /*with obsrvable*/
-/*
+
   getDishes(): Observable<Dish[]> {
     return of(DISHES).pipe(delay(2000));
   }
@@ -43,11 +43,9 @@ export class DishService {
   }
 
 
-  getDishIds(): Observable<string[] | any> {
-    return of(DISHES.map(dish => dish.id ));
-  }
-  */
-  /*pour le serveur*/
+  
+
+  /*pour le serveur
   getDishes(): Observable<Dish[]> {
     return this.http.get<Dish[]>(baseURL + 'dishes');
   }
@@ -63,5 +61,9 @@ export class DishService {
   getDishIds(): Observable<number[] | any> {
     return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)));
   }
-  
+  */
+
+ getDishIds(): Observable<string[] | any> {
+  return of(DISHES.map(dish => dish.id ));
+}
 }
